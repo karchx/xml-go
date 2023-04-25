@@ -11,9 +11,11 @@ var filterXmlCmd = &cobra.Command{
 	Short:   "Filter xml file",
 	Run: func(cmd *cobra.Command, args []string) {
 		filters.GetFiles(args[0])
-		if len(args) > 1 {
+		/*if len(args) > 1 {
 			filters.GetFiltersCsv(args[1])
 		}
+
+		filters.FilterNumeroInternoXml()*/
 	},
 }
 
