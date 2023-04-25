@@ -12,3 +12,14 @@
 //</ecfd:Personalizados>
 
 package filters
+
+import (
+	log "github.com/gothew/l-og"
+	"github.com/karchx/xml-go/pkg/utils"
+)
+
+func GetFiltersCsv(csv string) {
+	records := utils.ReadCsvFile(csv)
+
+	log.Infof("%v", records)
+}

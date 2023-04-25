@@ -9,9 +9,11 @@ var filterXmlCmd = &cobra.Command{
 	Use:     "filterxml",
 	Aliases: []string{"fxml"},
 	Short:   "Filter xml file",
-	Args:    cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		filters.GetFiles(args[0])
+		if len(args) > 1 {
+			filters.GetFiltersCsv(args[1])
+		}
 	},
 }
 
