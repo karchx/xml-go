@@ -11,7 +11,6 @@ package filters
 
 import (
 	"io/ioutil"
-	"os"
 
 	log "github.com/gothew/l-og"
 	"github.com/karchx/xml-go/pkg/utils"
@@ -24,16 +23,6 @@ func GetFiles(directory string) {
 	}
 	for _, f := range files {
 		log.Infof("FileName: %s", f.Name())
+		log.Infof("FileDate: %s", utils.GetDateFile(f))
 	}
-}
-
-func GetFileDate() string {
-	filename := "../dumps/FACT_00a66b19-c583-4312-b739-67bbc7860225__a70dd235-5c1d-46ef-be02-9ba5e4a3b93c.xml"
-
-	file, err := os.Stat(filename)
-
-	if err != nil {
-		log.Error(err)
-	}
-	return utils.GetDateFile(file)
 }
