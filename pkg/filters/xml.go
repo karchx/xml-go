@@ -6,6 +6,7 @@ import (
 	"os"
 
 	log "github.com/gothew/l-og"
+	"github.com/karchx/xml-go/pkg/fs"
 )
 
 type Adenda struct {
@@ -19,12 +20,11 @@ type Campo struct {
 	Valor   string   `xml:",chardata"`
 }
 
-func FilterNumeroInternoXml(fileName string) {
-	//fileName := "dumps/test.xml"
+func FilterNumeroInternoXml(fileName string, key string) {
 
 	file, err := os.Open(fileName)
 	if err != nil {
-		log.Fatalf("Error al abrir el archivo: %v", err)
+		log.Fatalf("Unable open file: %v", err)
 	}
 	defer file.Close()
 
@@ -36,7 +36,11 @@ func FilterNumeroInternoXml(fileName string) {
 
 	for _, campo := range adenda.Campos {
 		if campo.Nombre == "NUMEROINTERNO" {
-			log.Infof("El número interno es: %s", campo.Valor)
+			if key == campo.Valor {
+				log.Infof("NUMEROINTERNO: %s", campo.Valor)
+				log.Infof("MATCH WITH FILE: %s", fileName)
+				fs.MoveMatchNewFolder(fileName)
+			}
 		}
 	}
 }

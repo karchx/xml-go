@@ -16,13 +16,21 @@ import (
 	"github.com/karchx/xml-go/pkg/utils"
 )
 
-func GetFiles(directory string) {
+func GetFiles(directory string, filters []utils.CSV) {
 	files, err := ioutil.ReadDir(directory)
+	var index int
+
 	if err != nil {
 		log.Fatalf("%s", err)
 	}
-	for _, f := range files {
-		log.Infof("FileName: %s", f.Name())
-		log.Infof("FileDate: %s", utils.GetDateFile(f))
+	for i, f := range files {
+		fileName := directory + "/" + f.Name()
+
+		if i >= len(filters)-1 {
+			i = 0
+		}
+		index = i + 1
+
+		FilterNumeroInternoXml(fileName, filters[index].NumeroInterno)
 	}
 }

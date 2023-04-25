@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"github.com/karchx/xml-go/pkg/filters"
+	"github.com/karchx/xml-go/pkg/utils"
 	"github.com/spf13/cobra"
 )
 
@@ -10,12 +11,13 @@ var filterXmlCmd = &cobra.Command{
 	Aliases: []string{"fxml"},
 	Short:   "Filter xml file",
 	Run: func(cmd *cobra.Command, args []string) {
-		filters.GetFiles(args[0])
-		/*if len(args) > 1 {
-			filters.GetFiltersCsv(args[1])
+		var filtersCsv []utils.CSV
+		if len(args) > 1 {
+			filtersCsv = filters.GetFiltersCsv(args[1])
+		} else {
+			filtersCsv = []utils.CSV{}
 		}
-
-		filters.FilterNumeroInternoXml()*/
+		filters.GetFiles(args[0], filtersCsv)
 	},
 }
 

@@ -13,13 +13,8 @@
 
 package filters
 
-import (
-	log "github.com/gothew/l-og"
-	"github.com/karchx/xml-go/pkg/utils"
-)
+import "github.com/karchx/xml-go/pkg/utils"
 
-func GetFiltersCsv(csv string) {
-	records := utils.ReadCsvFile(csv)
-
-	log.Infof("%v", records)
+func GetFiltersCsv(csv string) []utils.CSV {
+	return utils.ReadCsvFile(csv)
 }
