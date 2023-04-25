@@ -10,7 +10,7 @@ import (
 )
 
 type Adenda struct {
-	XMLName xml.Name `xml:"http://www.sat.gob.gt/dte/fel/0.1.0 GTDocumento"`
+	XMLName xml.Name `xml:"GTDocumento"`
 	Campos  []Campo  `xml:"SAT>Adenda>ECFD>Personalizados>campoString"`
 }
 
@@ -21,7 +21,6 @@ type Campo struct {
 }
 
 func FilterNumeroInternoXml(fileName string, key string) {
-
 	file, err := os.Open(fileName)
 	if err != nil {
 		log.Fatalf("Unable open file: %v", err)

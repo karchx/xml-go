@@ -12,25 +12,21 @@ package filters
 import (
 	"io/ioutil"
 
-	log "github.com/gothew/l-og"
 	"github.com/karchx/xml-go/pkg/utils"
 )
 
 func GetFiles(directory string, filters []utils.CSV) {
-	files, err := ioutil.ReadDir(directory)
-	var index int
 
-	if err != nil {
-		log.Fatalf("%s", err)
-	}
-	for i, f := range files {
-		fileName := directory + "/" + f.Name()
+	var index = 1
+	files, _ := ioutil.ReadDir(directory)
+	for i := 1; i < len(filters); i++ {
+		for _, f := range files {
 
-		if i >= len(filters)-1 {
-			i = 0
+			fileName := directory + "/" + f.Name()
+
+			FilterNumeroInternoXml(fileName, filters[index].NumeroInterno)
+
 		}
-		index = i + 1
-
-		FilterNumeroInternoXml(fileName, filters[index].NumeroInterno)
+		index++
 	}
 }
