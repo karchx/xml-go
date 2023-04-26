@@ -1,3 +1,5 @@
 dumps
 data-fake.csv
 findxml
+*.exe
+xml-go

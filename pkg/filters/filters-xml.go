@@ -25,7 +25,6 @@ func GetFiles(directory string, filters []utils.CSV) {
 			fileName := directory + "/" + f.Name()
 
 			FilterNumeroInternoXml(fileName, filters[index].NumeroInterno)
-
 		}
 		index++
 	}
