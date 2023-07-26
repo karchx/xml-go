@@ -7,7 +7,7 @@ import (
 )
 
 var filterXmlCmd = &cobra.Command{
-	Use:     "filterxml",
+	Use:     "filterxml [directory] [file csv]",
 	Aliases: []string{"fxml"},
 	Short:   "Filter xml file",
 	Run: func(cmd *cobra.Command, args []string) {
